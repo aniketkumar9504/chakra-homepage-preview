@@ -51,7 +51,7 @@
 </style><style id="hr1-hero-tabs">
 /* ── Hero Hire/Practice segmented toggle ───────────────────────────── */
 .hr1-hero__toggle{position:relative;display:inline-flex;align-items:center;gap:0;padding:5px;border-radius:999px;background:rgba(20,20,25,.07);border:1px solid rgba(20,20,25,.08);box-shadow:inset 0 1px 2px rgba(20,20,25,.06);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);margin-bottom:16px;isolation:isolate}
-.hr1-hero__tab{position:relative;z-index:1;appearance:none;-webkit-appearance:none;border:0;background:transparent;cursor:pointer;font:500 17px/1 "Satoshi",Arial,sans-serif;letter-spacing:.01em;color:rgba(20,20,25,.62);padding:14px 32px;border-radius:999px;white-space:nowrap;transition:color .35s cubic-bezier(.22,1,.36,1)}
+.hr1-hero__tab{position:relative;z-index:1;appearance:none;-webkit-appearance:none;border:0;background:transparent;cursor:pointer;font:500 17px/1 "SatoshiLocal","Satoshi",Arial,sans-serif;letter-spacing:.01em;color:rgba(20,20,25,.62);padding:14px 32px;border-radius:999px;white-space:nowrap;transition:color .35s cubic-bezier(.22,1,.36,1)}
 .hr1-hero__tab:hover{color:rgba(20,20,25,.85)}
 .hr1-hero__tab[aria-pressed="true"]{color:#141419}
 .hr1-hero__tab:focus-visible{outline:2px solid #141419;outline-offset:3px}
@@ -111,12 +111,14 @@ body.hr1-dev-mode .hr1-stickybar{transform:translateY(135%)!important;opacity:0!
 }
 @media (prefers-reduced-motion:reduce){.hr1-stickybar{transition:opacity .3s ease}.hr1-stickybar:not(.is-visible){transform:translateY(135%)}.hr1-stickybar.is-visible{transform:none}}
 </style><style id="hr1-satoshi-local">
-/* Self-host Satoshi so the sans-serif is guaranteed to load (not CDN-dependent) */
-@font-face{font-family:Satoshi;src:url('assets/fonts/Satoshi-400.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap}
-@font-face{font-family:Satoshi;src:url('assets/fonts/Satoshi-500.woff2') format('woff2');font-weight:500;font-style:normal;font-display:swap}
-@font-face{font-family:Satoshi;src:url('assets/fonts/Satoshi-700.woff2') format('woff2');font-weight:700;font-style:normal;font-display:swap}
+/* Self-host Satoshi under a unique name so it can't collide with the CDN's CORS-blocked Satoshi faces */
+@font-face{font-family:SatoshiLocal;src:url('assets/fonts/Satoshi-400.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:SatoshiLocal;src:url('assets/fonts/Satoshi-500.woff2') format('woff2');font-weight:500;font-style:normal;font-display:swap}
+@font-face{font-family:SatoshiLocal;src:url('assets/fonts/Satoshi-700.woff2') format('woff2');font-weight:700;font-style:normal;font-display:swap}
+/* Make the whole page prefer the reliably-loaded local Satoshi over the CDN's (--hr-body is set on .hr-v1) */
+:root,.hr-v1{--hr-body:"SatoshiLocal","Satoshi",Arial,sans-serif}
 /* The before/after cards shipped in Geist Mono — unify them to Satoshi */
-.hr1-person__pill,.hr1-person__card{font-family:var(--hr-body,Satoshi,sans-serif)}
+.hr1-person__pill,.hr1-person__card{font-family:var(--hr-body)}
 </style><style id="hr1-folds-css">
 /* ── Integrations fold ─────────────────────────────────────────────── */
 .hr1-int{padding:64px 0}
